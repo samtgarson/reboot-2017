@@ -1,4 +1,5 @@
 @import './fonts'
+@import './helpers'
 
 *, *:before, *:after
   box-sizing: border-box
@@ -6,11 +7,15 @@
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
+body,
+html
+  font-family: 'Circular', sans-serif
+  font-size: 18px
+  line-height: 1.5
+
 body
   background-color: #0000ff
   color: white
-  font-family: 'Circular', sans-serif
-  font-size: 18px
 
 input,
 select,
@@ -20,6 +25,9 @@ button
   font-family: 'Circular', sans-serif
   font-size: 18px
   outline: none
+
+  +mobile
+    font-size: 16px
 
   &::placeholder
     color: rgba(white, .6)
@@ -38,9 +46,20 @@ a
 .container
   padding: 30px 30px 100px
 
+  +mobile
+    padding: 10px 10px 50px
+
 a,
 button
   transition: opacity .2s ease-out
 
   &:hover
     opacity: .5
+
+
+.fade-enter-active, .fade-leave-active
+  transition: opacity .5s ease-in-out, transform .5s ease-in-out
+
+.fade-enter, .fade-leave-active
+  opacity: 0
+  transform: translate3d(0, 10px, 0)

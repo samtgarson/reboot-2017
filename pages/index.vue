@@ -31,6 +31,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '~assets/helpers'
+
 ol
   margin-top: 20vh
   margin-bottom: 50px
@@ -40,10 +42,15 @@ ol
 li
   list-style-position: inside
   font-size: 4.2rem
-  line-height: 150%
   opacity: 0
   transition: 0.6s opacity ease, 0.6s transform ease
   transform: translate3d(0, -10px, 0)
+
+  +tablet
+    font-size: 2.4rem
+
+  +mobile
+    font-size: 1.5rem
 
   @for $i from 0 through 2
     &:nth-child(#{$i + 1})
@@ -56,6 +63,9 @@ p
   opacity: 0
   transition: 0.5s 0.5s ease-in-out opacity, 1s transform ease
   transform: translate3d(0, 20px, 0)
+
+  +mobile
+    font-size: 1rem
 
   @for $i from 0 through 2
     &:nth-child(#{$i + 1})

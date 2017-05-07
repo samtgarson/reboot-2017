@@ -1,6 +1,6 @@
 <template lang="pug">
   .container
-    h4 Drop me a line
+    h3 Drop me a line
     form(action="https://formspree.io/hey@samgarson.com", @submit.prevent="submit", :class="{ loading }", ref="form")
       .fields(v-show="success === null")
         input(type="text", name="name", placeholder="What should I call you")
@@ -62,7 +62,7 @@ form
     opacity: .5
     pointer-events: none
 
-h4
+h3
   margin-bottom: 1.2em
 
 input,
