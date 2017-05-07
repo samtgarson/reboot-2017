@@ -16,7 +16,7 @@
   }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 
 #main
   width: 100%
@@ -26,4 +26,11 @@
   position: relative
   height: 100vh
   overflow-x: hidden
+
+.stripes
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
 </style>
