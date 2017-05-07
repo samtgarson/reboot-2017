@@ -37,7 +37,7 @@ ol
   margin-top: 20vh
   margin-bottom: 50px
   padding-left: 0
-  transition: margin 1s ease-in-out
+  transition: margin 1.2s cubic-bezier(0.600, 0, 0.050, 1)
 
 li
   list-style-position: inside
@@ -61,7 +61,7 @@ p
   max-width: 500px
   margin-bottom: 20px
   opacity: 0
-  transition: 0.5s 0.5s ease-in-out opacity, 1s transform ease
+  transition: 0.5s 0.5s cubic-bezier(0.600, 0, 0.050, 1) opacity, 1s transform cubic-bezier(0.600, 0, 0.050, 1)
   transform: translate3d(0, 20px, 0)
 
   +mobile
@@ -81,7 +81,7 @@ p
 
 .go2
   ol
-    margin-top: 8vh
+    margin-top: 12vh
 
   p
     opacity: 1

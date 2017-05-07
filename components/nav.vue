@@ -1,10 +1,10 @@
 <template lang="pug">
-  nav(:class="{ show }")
+  nav(:class="{ show, links }")
     ul
       nuxt-link(tag="li", :to="{ name: 'index' }", :exact="true")#home
         a Sam Garson #[span Digital Product Strategy]
       li#menu
-        a(@click="show = !show") {{ show ? 'Close' : 'Menu' }}
+        a(@click="show = !show; links = false") {{ show ? 'Close' : 'Menu' }}
       transition(name="fade")
         .mobile(v-show="show")
           nuxt-link(tag="li", :to="{ name: 'index' }", :exact="true")#home-mobile
@@ -12,17 +12,35 @@
           nuxt-link(tag="li", :to="{ name: 'work' }")#work
             a Selected Works
           li#links
-            a Quick Links
+            a(@click="links = true; show = false") Quick Links
           nuxt-link(tag="li", :to="{ name: 'contact' }")#contact
             a Get In Touch
+      transition(name="fade")
+        .quick-links(v-show="links")
+          nuxt-link(tag="li", :to="{ name: 'about' }") About The Why
+          li(v-for="(url, name) in social")
+            a(:href="url", target="_blank") {{ name }}
+          li
+            a(@click="links = false; show = true") Back
 </template>
 
 <script>
+const social = {
+  Github: 'https://github.com/samtgarson',
+  Twitter: 'https://twitter.com/samtgarson',
+  VSCO: 'https://vsco.co/samtgarson'
+}
+
 export default {
-  data: () => ({ show: false }),
+  data: () => ({
+    show: false,
+    links: false,
+    social
+  }),
   watch: {
     $route () {
       this.show = false
+      this.links = false
     }
   }
 }
@@ -32,16 +50,18 @@ export default {
 @import '~assets/helpers'
 
 nav
-  position: fixed
-  top: 0
-  bottom: 0
-  left: 0
-  right: 0
   pointer-events: none
   transition: background .3s ease-in-out
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+
+  &.links
+    background-color: rgba(#0000ff, 0.8)
 
   +mobile
-    text-align: center
     &.show
       background-color: rgba(#0000ff, 0.8)
 
@@ -109,23 +129,35 @@ li
   +mobile
     display: block
 
-.mobile
+.mobile,
+.quick-links
   height: 100vh
   display: flex
   flex-flow: column nowrap
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
   justify-content: center
+  align-items: center
 
+.mobile
   +desktop
     display: block !important
   +tablet
     display: block !important
 
-  +mobile
-    li
+  li
+    +mobile
+      margin-bottom: 20px
       position: relative
       top: auto !important
       bottom: auto !important
       right: auto !important
       left: auto !important
-      margin-bottom: 20px
+
+.quick-links li
+  position: relative
+  margin-bottom: 20px
 </style>
