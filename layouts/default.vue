@@ -2,17 +2,19 @@
   section
     #main
       nuxt
-    nav
-      ul
-        nuxt-link(tag="li", :to="{ name: 'index' }", :exact="true")#home
-          a Sam Garson #[span Digital Product Strategy]
-        nuxt-link(tag="li", :to="{ name: 'work' }")#work
-          a Selected Works
-        li#links
-          a Quick Links
-        nuxt-link(tag="li", :to="{ name: 'contact' }")#contact
-          a Get In Touch
+      .stripes
+        stripe(v-for="i in 6", :key="i", :i="i")
+    global-nav
 </template>
+
+<script>
+  import Stripe from '~/components/stripe'
+  import GlobalNav from '~/components/nav'
+
+  export default {
+    components: { Stripe, GlobalNav }
+  }
+</script>
 
 <style lang="sass">
 
@@ -23,52 +25,5 @@
   padding: 60px 20px
   position: relative
   height: 100vh
-
-nav
-  z-index: 1
-
-ul
-  padding: 0
-  margin: 0
-
-li
-  display: block
-  list-style-image: none
-  position: absolute
-
-  &::after
-    content: ''
-    position: absolute
-    left: 0
-    height: 1px
-    bottom: -1px
-    background-color: white
-    right: 100%
-    transition: right .2s ease-out
-
-  &.nuxt-link-active::after
-    right: 0
-
-
-  span
-    opacity: .5
-
-  &#home
-    top: 20px
-    left: 20px
-
-    &::after
-      content: none
-
-  &#work
-    top: 20px
-    right: 20px
-
-  &#links
-    bottom: 20px
-    left: 20px
-
-  &#contact
-    bottom: 20px
-    right: 20px
+  overflow-x: hidden
 </style>

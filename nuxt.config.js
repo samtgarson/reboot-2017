@@ -16,6 +16,12 @@ module.exports = {
   css: [
     { src: '~assets/global.sass', lang: 'sass' }
   ],
+  transition: {
+    mode: 'out-in',
+    beforeLeave (el) {
+      el.__vue__.$store.dispatch('transition')
+    },
+  },
   /*
   ** Customize the progress-bar color
   */

@@ -3,13 +3,22 @@
 *, *:before, *:after
   box-sizing: border-box
   margin: 0
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
 
 body
   background-color: #0000ff
   color: white
   font-family: 'Circular', sans-serif
+  font-size: 18px
 
 a
   color: white
   text-decoration: none
 
+.page-enter-active, .page-leave-active
+  transition: opacity 0.2s
+
+.page-enter, .page-leave-active
+  opacity: 0
+  transition: opacity .5s
