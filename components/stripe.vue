@@ -32,7 +32,7 @@ export default {
     bottom: 100%
 
 .stripe
-  border-right: 1px solid rgba(white, .5)
+  border-right: 1px solid rgba(white, 0.3)
   position: absolute
   top: 0
   bottom: 0
@@ -40,29 +40,37 @@ export default {
   z-index: -1
   transition: 0.2s background-color
 
-  &::before
+  &::before,
+  &:first-child::after
     content: ''
     position: absolute
     bottom: 0
-    left: -1px
+    right: -1px
     top: 100%
     width: 1px
     background-color: white
     transition: top 0.2s ease-in-out, bottom .2s ease-in-out
 
+  &:first-child::after
+    right: auto
+    left: 0px
 
-  @for $i from 0 through 5
+
+  @for $i from 0 through 7
     &:nth-child(#{$i + 1})
-      $width: 100% / 6
+      $width: 100% / 8
       width: $width
       left: $i * $width
-      // $duration: .8s - ($i * 0.08s)
-      $duration: .8s
+      $duration: 0.6s
 
       &.transition
         &::before
           animation: $duration 1 transition-before
-          animation-delay: .1s * $i
+          animation-delay: .1s * ($i + 1)
+
+        &:first-child::after
+          animation: $duration 1 transition-before
+          animation-delay: 0s
 
       +tablet
         $width: 100% / 4

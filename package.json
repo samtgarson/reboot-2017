@@ -5,6 +5,8 @@
   "author": "Sam Garson <samtgarson@gmail.com>",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.1",
+    "form-serialize": "^0.7.1",
     "nuxt": "latest"
   },
   "scripts": {

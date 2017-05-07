@@ -2,7 +2,7 @@
   section
     #main
       .stripes
-        stripe(v-for="i in 6", :key="i", :i="i")
+        stripe(v-for="i in 8", :key="i", :i="i")
       nuxt
     global-nav
 </template>
@@ -33,4 +33,5 @@
   top: 0
   bottom: 0
   overflow-x: hidden
+  z-index: -1
 </style>

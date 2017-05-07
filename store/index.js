@@ -5,11 +5,12 @@ const store = new Vuex.Store({
     transitioning: false
   },
   actions: {
-    transition ({ commit, state: { transitioning } }) {
+    transition ({ dispatch, commit, state: { transitioning } }, repeat = false) {
       if (transitioning) clearTimeout(transitioning)
       const t = setTimeout(() => {
         commit('setTransition', false)
-      }, 2000)
+        if (repeat) setImmediate(() => dispatch('transition', true))
+      }, 1500)
       commit('setTransition', t)
     }
   },
