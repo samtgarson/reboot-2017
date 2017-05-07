@@ -9,7 +9,7 @@ const store = new Vuex.Store({
       if (transitioning) clearTimeout(transitioning)
       const t = setTimeout(() => {
         commit('setTransition', false)
-      }, 1200)
+      }, 2000)
       commit('setTransition', t)
     }
   },

@@ -1,9 +1,9 @@
 <template lang="pug">
   section
     #main
-      nuxt
       .stripes
         stripe(v-for="i in 6", :key="i", :i="i")
+      nuxt
     global-nav
 </template>
 
@@ -25,7 +25,6 @@
   padding: 60px 20px
   position: relative
   height: 100vh
-  overflow-x: hidden
 
 .stripes
   position: fixed
@@ -33,4 +32,5 @@
   right: 0
   top: 0
   bottom: 0
+  overflow-x: hidden
 </style>

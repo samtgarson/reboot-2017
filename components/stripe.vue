@@ -19,12 +19,17 @@ export default {
 @keyframes transition-before
   0%
     top: 100%
+    opacity: 1
 
-  80%
+  50%
     top: 0
+    opacity: 1
+    bottom: 0
 
   100%
-    top: 100%
+    // opacity: 0
+    top: 0
+    bottom: 100%
 
 .stripe
   border-right: 1px solid rgba(white, .5)
@@ -43,7 +48,7 @@ export default {
     top: 100%
     width: 1px
     background-color: white
-    transition: top 0.1s ease-in-out
+    transition: top 0.2s ease-in-out, bottom .2s ease-in-out
 
 
   @for $i from 0 through 5
@@ -51,7 +56,8 @@ export default {
       $width: 100% / 6
       width: $width
       left: $i * $width
-      $duration: .8s - ($i * 0.08s)
+      // $duration: .8s - ($i * 0.08s)
+      $duration: .8s
 
       &.transition
         &::before

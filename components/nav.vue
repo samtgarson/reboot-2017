@@ -19,6 +19,14 @@ export default {
 <style lang="sass" scoped>
 @import '~assets/helpers'
 
+nav
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  pointer-events: none
+
 ul
   padding: 0
   margin: 0
@@ -27,6 +35,7 @@ li
   display: block
   list-style-image: none
   position: absolute
+  pointer-events: auto
 
   &::after
     content: ''
